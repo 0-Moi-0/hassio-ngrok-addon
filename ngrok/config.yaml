@@ -18,3 +18,5 @@ schema:
   ngrok_url: str
 ports:
   5050/tcp: 8123
+map:
+  - config:rw
