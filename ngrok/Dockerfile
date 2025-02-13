@@ -3,7 +3,7 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 
-FROM homeassistant/amd64-base:latest
+FROM homeassistant/arm64-base:latest
 
 RUN apk add --no-cache bash curl unzip
 
