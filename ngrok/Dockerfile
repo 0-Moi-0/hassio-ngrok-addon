@@ -3,7 +3,7 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 
-RUN apk add --no-cache bash curl unzip
+RUN apk update && apk add --no-cache bash curl unzip
 
 RUN curl -fsSL https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-arm.zip -o /tmp/ngrok.zip \
     && unzip /tmp/ngrok.zip -d /usr/local/bin \
