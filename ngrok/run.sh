@@ -1,11 +1,11 @@
 #!/bin/bash
 
-AUTHTOKEN=$(bashio::config 'authtoken')
+# Lee el authtoken desde la configuración
+AUTHTOKEN=$(jq -r '.authtoken' /config/ngrok/config.json)
+NGROK_URL=$(jq -r '.ngrok_url' /config/ngrok/config.json)
 
-if [[ -z "$AUTHTOKEN" ]]; then
-  echo "ERROR: No authtoken provided!"
-  exit 1
-fi
-
+# Configura el authtoken
 ngrok config add-authtoken "$AUTHTOKEN"
-ngrok http 8123
+
+# Ejecuta el túnel de Ngrok
+ngrok http --hostname="$NGROK_URL" 8123
