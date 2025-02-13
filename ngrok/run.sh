@@ -52,3 +52,6 @@ ngrok config add-authtoken $AUTHTOKEN
 
 echo "Iniciando túnel en $NGROK_URL"
 ngrok http --region=us --hostname=$NGROK_URL 8123
+
+# Mantiene el contenedor en ejecución
+tail -f /dev/null
