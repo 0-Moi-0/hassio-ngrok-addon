@@ -1,5 +1,5 @@
 name: "Ngrok"
-version: "1.1.1"
+version: "1.1.2"
 slug: "ngrok"
 description: "Tunel Home Assistant a internet con Ngrok"
 arch:
@@ -10,6 +10,7 @@ arch:
   - i386
 startup: application
 boot: auto
+init: false
 options:
   authtoken: ""  # Token de autenticación de Ngrok
   ngrok_url: ""  # Dirección proporcionada por Ngrok
