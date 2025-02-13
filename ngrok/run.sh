@@ -38,6 +38,7 @@ sleep 2  # Espera 2 segundos
 # Extraer valores del archivo de opciones
 echo "Paso 8: Activando Ngrok con authtoken: $AUTHTOKEN"
 AUTHTOKEN=$(jq --raw-output '.authtoken' $CONFIG_PATH)
+echo "El token obtenido es: $AUTHTOKEN"
 sleep 2  # Espera 2 segundos
 ngrok config add-authtoken $AUTHTOKEN
 sleep 5  # Espera 5 segundos
@@ -49,6 +50,7 @@ sleep 5  # Espera 5 segundos
 
 echo "Iniciando túnel en $NGROK_URL"
 NGROK_URL=$(jq --raw-output '.ngrok_url' $CONFIG_PATH)
+echo "El DNS obtenido es: $NGROK_URL"
 sleep 2  # Espera 2 segundos
 ngrok http --region=us --hostname=$NGROK_URL 8123
 
