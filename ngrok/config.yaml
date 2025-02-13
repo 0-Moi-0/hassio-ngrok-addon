@@ -15,8 +15,8 @@ options:
   authtoken: ""  # Token de autenticación de Ngrok
   ngrok_url: ""  # Dirección proporcionada por Ngrok
 schema:
-  authtoken: str
-  ngrok_url: str
+  authtoken: str?
+  ngrok_url: str?
 ports:
   5050/tcp: 5050
 map:
