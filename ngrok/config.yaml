@@ -18,6 +18,6 @@ schema:
   authtoken: str
   ngrok_url: str
 ports:
-  5050/tcp: 8123
+  5050/tcp: 5050
 map:
   - config:rw
