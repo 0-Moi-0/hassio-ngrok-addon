@@ -1,7 +1,7 @@
 name: "Ngrok"
 version: "1.0.0"
 slug: "ngrok"
-description: "Exponer tu Home Assistant a internet con Ngrok"
+description: "Tunel Home Assistant a internet con Ngrok"
 arch:
   - armhf
   - armv7
