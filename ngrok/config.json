@@ -1,5 +1,5 @@
 {
-    "name": "Ngrok Agent",
+    "name": "Ngrok",
     "version": "1.0.0",
     "slug": "ngrok",
     "description": "Expose Home Assistant to the internet using Ngrok",
