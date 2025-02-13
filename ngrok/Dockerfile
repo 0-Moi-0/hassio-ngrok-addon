@@ -3,6 +3,7 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 
+FROM alpine:3.18
 RUN apk update && apk add --no-cache bash curl unzip
 
 RUN curl -fsSL https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-arm.zip -o /tmp/ngrok.zip \
