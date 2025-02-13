@@ -43,15 +43,12 @@ sleep 5  # Espera 5 segundos
 
 echo "Ngrok está corriendo y Home Assistant es accesible a través de la URL proporcionada por Ngrok."
 
+# Extraer valores del archivo de opciones
+AUTHTOKEN=$(jq --raw-output '.authtoken' $CONFIG_PATH)
+NGROK_URL=$(jq --raw-output '.ngrok_url' $CONFIG_PATH)
 
+echo "Activando Ngrok con authtoken: $AUTHTOKEN"
+ngrok config add-authtoken $AUTHTOKEN
 
-
-# Lee el authtoken desde la configuración
-AUTHTOKEN=$(jq -r '.authtoken' /config/ngrok/config.json)
-NGROK_URL=$(jq -r '.ngrok_url' /config/ngrok/config.json)
-
-# Configura el authtoken
-ngrok config add-authtoken "$AUTHTOKEN"
-
-# Ejecuta el túnel de Ngrok
-ngrok http --hostname="$NGROK_URL" 8123
+echo "Iniciando túnel en $NGROK_URL"
+ngrok http --region=us --hostname=$NGROK_URL 8123
