@@ -1,0 +1,17 @@
+{
+    "name": "Ngrok Agent",
+    "version": "1.0.0",
+    "slug": "ngrok",
+    "description": "Expose Home Assistant to the internet using Ngrok",
+    "arch": ["armv7", "armhf", "aarch64", "amd64", "i386"],
+    "startup": "system",
+    "boot": "auto",
+    "options": {
+      "authtoken": ""
+    },
+    "schema": {
+      "authtoken": "str"
+    },
+    "image": "ghcr.io/0-Moi-0/ngrok-addon-{arch}"
+  }
+  
