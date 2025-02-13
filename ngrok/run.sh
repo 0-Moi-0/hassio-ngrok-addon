@@ -35,23 +35,24 @@ echo "Paso 7: Aplicando los cambios..."
 source ~/.bashrc
 sleep 2  # Espera 2 segundos
 
+# Extraer valores del archivo de opciones
+echo "Paso 8: Activando Ngrok con authtoken: $AUTHTOKEN"
+AUTHTOKEN=$(jq --raw-output '.authtoken' $CONFIG_PATH)
+sleep 2  # Espera 2 segundos
+ngrok config add-authtoken $AUTHTOKEN
+sleep 5  # Espera 5 segundos
+
 # Cerrar cualquier sesión previa de Ngrok
 echo "Paso 9: Cerrando sesiones previas de Ngrok..."
 pkill -f ngrok
 sleep 5  # Espera 5 segundos
 
+echo "Iniciando túnel en $NGROK_URL"
+NGROK_URL=$(jq --raw-output '.ngrok_url' $CONFIG_PATH)
+sleep 2  # Espera 2 segundos
+ngrok http --region=us --hostname=$NGROK_URL 8123
 
 echo "Ngrok está corriendo y Home Assistant es accesible a través de la URL proporcionada por Ngrok."
-
-# Extraer valores del archivo de opciones
-AUTHTOKEN=$(jq --raw-output '.authtoken' $CONFIG_PATH)
-NGROK_URL=$(jq --raw-output '.ngrok_url' $CONFIG_PATH)
-
-echo "Activando Ngrok con authtoken: $AUTHTOKEN"
-ngrok config add-authtoken $AUTHTOKEN
-
-echo "Iniciando túnel en $NGROK_URL"
-ngrok http --region=us --hostname=$NGROK_URL 8123
 
 # Mantiene el contenedor en ejecución
 tail -f /dev/null
