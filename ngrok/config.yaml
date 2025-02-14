@@ -1,5 +1,5 @@
 name: "Ngrok"
-version: "2.2.7"
+version: "2.2.8"
 slug: "ngrok"
 description: "Tunel Home Assistant a internet con Ngrok"
 arch:
@@ -17,7 +17,7 @@ options:
 schema:
   authtoken: str?
   ngrok_url: str?
-http:
-  server_port: 8123
+#http:
+  #server_port: 8123
 map:
   - config:rw
