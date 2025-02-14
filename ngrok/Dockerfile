@@ -1,8 +1,7 @@
 #ARG BUILD_FROM
 #FROM $BUILD_FROM
 
-FROM ghcr.io/home-assistant/arm64-base:latest
-
+FROM debian:bullseye-slim
 # Actualizar el contenedor y luego instalar las herramientas necesarias
 RUN apt-get update && \
     apt-get install -y sshpass sudo curl wget jq
