@@ -1,5 +1,7 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+#ARG BUILD_FROM
+#FROM $BUILD_FROM
+
+docker build --build-arg BUILD_FROM=debian:bullseye-slim -t mi-addon .
 
 # Actualizar el contenedor y luego instalar las herramientas necesarias
 RUN apk add --no-cache sshpass sudo curl wget jq bash
