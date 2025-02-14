@@ -63,7 +63,8 @@ echo "Iniciando túnel en $NGROK_URL"
 NGROK_URL=$(jq --raw-output '.ngrok_url' $CONFIG_PATH)
 echo "El DNS obtenido es: $NGROK_URL"
 sleep 2  # Espera 2 segundos
-bash -c "exec ngrok http --url=$NGROK_URL 18123"
+bash -c "exec ngrok http http://localhost:8123"
+#bash -c "exec ngrok http --url=$NGROK_URL 18123"
 
 echo "Ngrok está corriendo y Home Assistant es accesible a través de la URL proporcionada por Ngrok."
 
