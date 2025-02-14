@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Instalar sshpass si no está instalado
+apt-get update
+apt-get install -y sshpass
+
 # Limpiando Codigo
 clear
 
