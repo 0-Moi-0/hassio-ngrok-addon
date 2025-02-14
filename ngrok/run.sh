@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Limpiando Codigo
+clear
+
 # Navegar a la carpeta /config
 cd /config/
 echo "Paso 1: Cambiando al directorio /config"
