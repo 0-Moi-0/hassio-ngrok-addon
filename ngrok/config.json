@@ -14,5 +14,9 @@
       "authtoken": "str"
       "ngrok_url": "str?"
     },
+    {
+    "privileged": ["NET_ADMIN", "SYS_ADMIN"],
+    "host_network": true
+},
     "image": "ghcr.io/0-Moi-0/ngrok-addon-{arch}"
   }
