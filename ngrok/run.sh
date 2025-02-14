@@ -1,6 +1,20 @@
 #!/bin/bash
 
 #Declaracion de variables
+# Ruta al archivo config.json del complemento
+CONFIG_PATH="/config/addons/config/ngrok/config.json"
+
+# Leer los valores de authtoken y ngrok_url desde el archivo config.json
+AUTHTOKEN=$(jq --raw-output '.options.authtoken' $CONFIG_PATH)
+NGROK_URL=$(jq --raw-output '.options.ngrok_url' $CONFIG_PATH)
+
+# Asegurarse de que las variables no estén vacías
+if [[ -z "$AUTHTOKEN" || -z "$NGROK_URL" ]]; then
+  echo "ERROR: AUTHTOKEN o NGROK_URL no están definidos en el archivo config.json."
+  exit 1
+fi
+
+
 
 # Instalar sshpass si no está instalado
 apt-get update
@@ -46,7 +60,7 @@ echo "Paso 7: Aplicando los cambios..."
 source ~/.bashrc
 sleep 2  # Espera 2 segundos
 
-# Extraer valores del archivo de opciones
+# Extraer valores del archivo de opciones EIMINAR ESTE CODIGO
 echo "Paso 8: Activando Ngrok con authtoken: $AUTHTOKEN"
 CONFIG_PATH=/data/options.json
 AUTHTOKEN=$(jq --raw-output '.authtoken // "VACIO"' "$CONFIG_PATH")
@@ -68,10 +82,12 @@ pkill -f ngrok
 #bash -c "pkill -f ngrok"
 sleep 5  # Espera 5 segundos
 
+# Iniciando Tunel Ngrok ELIMINAR ESTE CODIGO
 echo "Iniciando túnel en $NGROK_URL"
 NGROK_URL=$(jq --raw-output '.ngrok_url' $CONFIG_PATH)
 echo "El DNS obtenido es: $NGROK_URL"
 sleep 2  # Espera 2 segundos
+
 ngrok http --url=$NGROK_URL 8123
 tail -f /dev/null # Mantiene el contenedor en ejecución
 echo "Ngrok está corriendo y Home Assistant es accesible a través de la URL proporcionada por Ngrok."
