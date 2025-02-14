@@ -2,9 +2,7 @@ ARG BUILD_FROM
 FROM $BUILD_FROM
 
 # Actualizar el contenedor y luego instalar las herramientas necesarias
-RUN apt-get clean && apt-get update && \
-    apt-get install -y --no-install-recommends sshpass sudo curl wget jq && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache sshpass sudo curl wget jq bash
 
 # Cambia a un usuario con privilegios adecuados para tu complemento
 USER root
