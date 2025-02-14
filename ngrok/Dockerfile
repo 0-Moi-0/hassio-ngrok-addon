@@ -1,16 +1,15 @@
 #ARG BUILD_FROM
 #FROM $BUILD_FROM
 
-# Utilizar una imagen base compatible con ARM para Raspberry Pi
-FROM debian:latest
+# Usa Alpine, que es más liviano y compatible con Home Assistant
+FROM alpine:latest
 
-# Actualizar los repositorios e instalar las herramientas necesarias
-RUN apt-get update && \
-    apt-get install -y sshpass && \
-    apt-get clean
+# Instala herramientas necesarias
+RUN apk update && apk add --no-cache openssh sshpass
 
 # Comando por defecto al iniciar el contenedor
-CMD ["bash"]
+CMD ["sh"]
+
 
 
 # Copy data for add-on
