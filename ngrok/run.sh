@@ -1,26 +1,14 @@
 #!/bin/bash
 
 #Declaracion de variables
-# Ruta al archivo config.json del complemento
-CONFIG_PATH="/config/addons/config/ngrok/config.json"
-
-# Leer los valores de authtoken y ngrok_url desde el archivo config.json
-AUTHTOKEN=$(jq --raw-output '.options.authtoken' $CONFIG_PATH)
-NGROK_URL=$(jq --raw-output '.options.ngrok_url' $CONFIG_PATH)
-
-# Asegurarse de que las variables no estén vacías
-if [[ -z "$AUTHTOKEN" || -z "$NGROK_URL" ]]; then
-  echo "ERROR: AUTHTOKEN o NGROK_URL no están definidos en el archivo config.json."
-  exit 1
-fi
-
-
 
 # Instalar sshpass si no está instalado
 apt-get update
 apt-get install -y sshpass
 # Iniciar SSh en AH con credenciales de acceso
 sshpass -p "Inicio2025" ssh -o StrictHostKeyChecking=no hassio@homeassistant.local << EOF
+echo "Iniciando sesion SSH"
+
 
 # Limpiando Codigo
 clear
