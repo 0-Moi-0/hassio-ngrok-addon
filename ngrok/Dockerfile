@@ -1,7 +1,6 @@
-#ARG BUILD_FROM
-#FROM $BUILD_FROM
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
-FROM debian:bullseye-slim
 # Actualizar el contenedor y luego instalar las herramientas necesarias
 RUN apt-get clean && apt-get update && \
     apt-get install -y --no-install-recommends sshpass sudo curl wget jq && \
