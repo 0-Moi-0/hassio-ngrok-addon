@@ -1,19 +1,16 @@
 #ARG BUILD_FROM
 #FROM $BUILD_FROM
 
-docker build --build-arg BUILD_FROM=debian:bullseye-slim -t mi-addon .
+# Utilizar una imagen base compatible con ARM para Raspberry Pi
+FROM debian:latest
 
-# Actualizar el contenedor y luego instalar las herramientas necesarias
-RUN apk add --no-cache sshpass sudo curl wget jq bash
+# Actualizar los repositorios e instalar las herramientas necesarias
+RUN apt-get update && \
+    apt-get install -y sshpass && \
+    apt-get clean
 
-# Cambia a un usuario con privilegios adecuados para tu complemento
-USER root
-
-# Si necesitas otros pasos para la configuración de tu complemento, añádelos aquí
-
-# Comando predeterminado para ejecutar cuando se inicie el contenedor
-CMD ["/bin/bash"]
-
+# Comando por defecto al iniciar el contenedor
+CMD ["bash"]
 
 
 # Copy data for add-on
