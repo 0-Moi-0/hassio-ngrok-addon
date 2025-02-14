@@ -50,22 +50,22 @@ if [ "$AUTHTOKEN" = "VACIO" ]; then
 fi
 
 echo "✅ Usando authtoken: $AUTHTOKEN"
-bash -c "ngrok config add-authtoken "$AUTHTOKEN""
+ngrok config add-authtoken "$AUTHTOKEN"
 
 sleep 5  # Espera 5 segundos
 
 # Cerrar cualquier sesión previa de Ngrok
 echo "Paso 9: Cerrando sesiones previas de Ngrok..."
-bash -c "pkill -f ngrok"
+pkill -f ngrok
+#bash -c "pkill -f ngrok"
 sleep 5  # Espera 5 segundos
 
 echo "Iniciando túnel en $NGROK_URL"
 NGROK_URL=$(jq --raw-output '.ngrok_url' $CONFIG_PATH)
 echo "El DNS obtenido es: $NGROK_URL"
 sleep 2  # Espera 2 segundos
-bash -c "exec ngrok http --url=$NGROK_URL 8123"
-
+ngrok http --url=$NGROK_URL 8123
+tail -f /dev/null # Mantiene el contenedor en ejecución
 echo "Ngrok está corriendo y Home Assistant es accesible a través de la URL proporcionada por Ngrok."
 
-# Mantiene el contenedor en ejecución
-tail -f /dev/null
+
