@@ -3,18 +3,6 @@
 # Limpiando Codigo
 clear
 
-# Borra el complemento y vuélvelo a agregar
-echo "Preparando Repositorios de Ngrok..."
-rm -rf /data/addons/local/ngrok
-rm -rf /addons/local/ngrok
-sleep 2  # Espera 2 segundos
-# Clonar el complemento
-cd /addons
-git clone https://github.com/0-Moi-0/hassio-ngrok-addon ngrok
-sleep 2  # Espera 2 segundos
-# Recargar el complemento
-ha addons reload
-
 # Navegar a la carpeta /config
 cd /config/
 echo "Paso 1: Cambiando al directorio /config"
@@ -75,7 +63,7 @@ echo "Iniciando túnel en $NGROK_URL"
 NGROK_URL=$(jq --raw-output '.ngrok_url' $CONFIG_PATH)
 echo "El DNS obtenido es: $NGROK_URL"
 sleep 2  # Espera 2 segundos
-bash -c "exec ngrok http --url=$NGROK_URL 8123"
+bash -c "exec ngrok http --url=$NGROK_URL 18123"
 
 echo "Ngrok está corriendo y Home Assistant es accesible a través de la URL proporcionada por Ngrok."
 
