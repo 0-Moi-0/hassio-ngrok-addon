@@ -37,10 +37,18 @@ sleep 2  # Espera 2 segundos
 
 # Extraer valores del archivo de opciones
 echo "Paso 8: Activando Ngrok con authtoken: $AUTHTOKEN"
-AUTHTOKEN=$(jq --raw-output '.authtoken' $CONFIG_PATH)
+CONFIG_PATH=/data/options.json
+AUTHTOKEN=$(jq --raw-output '.authtoken // "VACIO"' "$CONFIG_PATH")
 echo "El token obtenido es: $AUTHTOKEN"
 sleep 2  # Espera 2 segundos
-ngrok config add-authtoken $AUTHTOKEN
+if [ "$AUTHTOKEN" = "VACIO" ]; then
+  echo "❌ ERROR: No se encontró un authtoken en el archivo de configuración."
+  exit 1
+fi
+
+echo "✅ Usando authtoken: $AUTHTOKEN"
+ngrok config add-authtoken "$AUTHTOKEN"
+
 sleep 5  # Espera 5 segundos
 
 # Cerrar cualquier sesión previa de Ngrok
