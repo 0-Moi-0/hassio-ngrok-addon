@@ -3,6 +3,18 @@
 # Limpiando Codigo
 clear
 
+# Borra el complemento y vuélvelo a agregar
+echo "Preparando Repositorios de Ngrok..."
+rm -rf /data/addons/local/ngrok
+rm -rf /addons/local/ngrok
+sleep 2  # Espera 2 segundos
+# Clonar el complemento
+cd /addons
+git clone https://github.com/0-Moi-0/hassio-ngrok-addon ngrok
+sleep 2  # Espera 2 segundos
+# Recargar el complemento
+ha addons reload
+
 # Navegar a la carpeta /config
 cd /config/
 echo "Paso 1: Cambiando al directorio /config"
