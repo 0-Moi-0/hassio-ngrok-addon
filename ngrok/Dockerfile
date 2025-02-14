@@ -3,8 +3,9 @@
 
 FROM debian:bullseye-slim
 # Actualizar el contenedor y luego instalar las herramientas necesarias
-RUN apt-get update && \
-    apt-get install -y sshpass sudo curl wget jq
+RUN apt-get clean && apt-get update && \
+    apt-get install -y --no-install-recommends sshpass sudo curl wget jq && \
+    rm -rf /var/lib/apt/lists/*
 
 # Cambia a un usuario con privilegios adecuados para tu complemento
 USER root
