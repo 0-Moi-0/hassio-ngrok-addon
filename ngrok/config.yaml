@@ -17,7 +17,7 @@ options:
 schema:
   authtoken: str?
   ngrok_url: str?
-ports:
-  18123/tcp: 8123
+http:
+  server_port: 8123
 map:
   - config:rw
