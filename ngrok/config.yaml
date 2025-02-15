@@ -1,5 +1,5 @@
 name: "Ngrok"
-version: "2.5.8"
+version: "3.0.0"
 slug: "ngrok"
 description: "Tunel Home Assistant a internet con Ngrok"
 arch:
