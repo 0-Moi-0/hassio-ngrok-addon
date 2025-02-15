@@ -3,11 +3,11 @@
 #Declaracion de variables
 
 # Instalar sshpass si no está instalado
-apt-get update
-apt-get install -y sshpass
+#apt-get update
+#apt-get install -y sshpass
 # Iniciar SSh en AH con credenciales de acceso
-sshpass -p "Inicio2025" ssh -o StrictHostKeyChecking=no hassio@homeassistant.local << EOF
-echo "Iniciando sesion SSH"
+#sshpass -p "Inicio2025" ssh -o StrictHostKeyChecking=no hassio@homeassistant.local << EOF
+#echo "Iniciando sesion SSH"
 
 
 # Limpiando Codigo
